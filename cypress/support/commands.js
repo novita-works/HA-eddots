@@ -37,3 +37,16 @@ Cypress.Commands.add('contactUsForm', (user) => {
     cy.get('#questions').type(user.questions)
     cy.get('button[type="submit"]').click()
 })
+
+Cypress.Commands.add('contactUsForm', (userRandom) => {
+    cy.get('#name').type(userRandom.name)
+    cy.get('#email').type(userRandom.email)
+    cy.get('#phone_number').type(userRandom.phone_number)
+    cy.get('#company_name').type(userRandom.company_name)
+    cy.get('#number_of_employees').click()
+    cy.get('div[data-value="51 - 100"]').click()
+    cy.get('#solutions').click()
+    cy.get('div[data-value="esuite (DMS)"]').click()
+    cy.get('#questions').type(userRandom.questions)
+    cy.get('button[type="submit"]').click()
+})

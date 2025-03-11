@@ -23,11 +23,11 @@ class HomePage {
   }
   
   verifyContactUsButton() {
-    cy.get('a[href="/contact-us"]').should('exist').and('be.visible') // Verifikasi tombol "Contact Us"
+    cy.get('a[href="/contact-us"]').should('exist').and('be.visible')
   }
 
   clickContactUsButton() {
-    cy.get('a[href="/contact-us"]').first().click() // Klik tombol "Contact Us"
+    cy.get('a[href="/contact-us"]').first().click()
   }
 }
 export default HomePage
