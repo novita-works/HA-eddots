@@ -7,7 +7,7 @@ const contact = new ContactUsPage()
 const randomUser = generateRandomUser()
 
 
-describe('Homepage Functionality Verification', () => {
+describe('Verify Homepage Functionality', () => {
   beforeEach(() => {
     home.visit()
     home.verifyLogoAppears()
@@ -43,6 +43,14 @@ describe('Homepage Functionality Verification', () => {
     .click()
     cy.url().should('eq','https://edot.id/contact-us')
   })
+})
+
+describe('Verify Contact Us Functionality', () => {
+  beforeEach(() => {
+    home.visit()
+    home.verifyLogoAppears()
+    home.verifyWhatsappAndScrollUpBtnAppears()
+  })
 
   it('Verify Contact Us Form Functionality With Random Data', () => {
     home.verifyContactUsButton()
@@ -66,6 +74,5 @@ describe('Homepage Functionality Verification', () => {
       cy.get('div[data-title=""]')
       .should('have.text', 'You have already submitted this form.').and('be.visible')
     })
-  })
 })
-
+})
