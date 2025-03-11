@@ -1,8 +1,4 @@
 class contactUsPage {
-    visit() {
-      cy.visit('/contact-us')
-    }
-
     verifyPageTitle() {
         cy.get('h1.text-3xl.font-bold.md\\:text-4xl.lg\\:text-\\[56px\\].lg\\:leading-\\[68px\\]')
         .should('have.text', 'Explore how eDOT  ecosystem can work for you.')

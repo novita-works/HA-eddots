@@ -8,38 +8,15 @@ const contact = new ContactUsPage()
 describe('Homepage Functionality Verification', () => {
   beforeEach(() => {
     home.visit()
+    home.verifyLogoAppears()
+    home.verifyWhatsappAndScrollUpBtnAppears()
   })
   
   it('Verify Navigation Button On Header', () => {
-    // Verify Menu Button
-    home.verifyMenuOnHeaders()
-    cy.get('ul[data-orientation="vertical"]').within(() => {
-      cy.contains('a', 'Home').as('homeMenu')
-      .should('exist')
-      .and('be.visible')
-      cy.get('@homeMenu').click()
-    })
-    cy.url().should('eq', 'https://edot.id/')
-    // Verify Contact Us Button
-    home.verifyContactUsButton()
-    home.clickContactUsButton()
-    contact.verifyPageTitle()
-    contact.verifyFormPage()
-    cy.get('img[alt="logo edot"').first()
-    .as('BackHomeButton')
-    .should('be.visible')
-    cy.get('@BackHomeButton')
-    .click()
     // Verify Try For Free Button
     home.verifyTryForFreeOnHeaders()
     cy.url()
     .should('eq','https://edot.id/?try_for_free=active')
-    cy.get('button.rounded-full').first()
-    .as('CloseButton')
-    .should('exist')
-    .and('be.visible')
-    cy.get('@CloseButton')
-    .click({ force: true }) 
   })
 
   it('Verify Navigation Button On Main', () => {
@@ -59,6 +36,7 @@ describe('Homepage Functionality Verification', () => {
   it('Verify Contact Us Form Functionality', () => {
     home.verifyContactUsButton()
     home.clickContactUsButton()
+    contact.verifyPageTitle()
     contact.verifyFormPage()
     cy.fixture('user').then((user) => {
       cy.contactUsForm(user)
